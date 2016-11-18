@@ -30,6 +30,7 @@
 (load-user-module "utils")
 (load-user-module "theme")
 (load-user-module "applications")
+(load-user-module "media-keys")
 
 ;; (run-shell-command "setxkbmap -geometry \"thinkpad(us)\" -option \"grp:shifts_toggle,ctrl:nocaps\" us,es")
 (run-shell-command "xrdb -merge -I ~/ ~/.Xresources")
