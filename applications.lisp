@@ -23,6 +23,8 @@
 (define-key *root-map* (kbd "s") "spotify")
 
 (defcommand urxvt () ()
-	    "run urxvt"
-	    (run-or-raise "urxvt" '(:class "URxvt")))
+  "run urxvt"
+  (let ((urxvt-with-tmux "urxvt -e zsh -c 'tmux -q has-session && exec tmux attach-session -d || exec tmux new-session -n$USER -s$USER@$HOSTNAME'"))
+    (run-or-raise urxvt-with-tmux '(:class "URxvt"))
+    (title "URxvt")))
 (define-key *root-map* (kbd "c") "urxvt")
