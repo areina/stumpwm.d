@@ -7,6 +7,11 @@
 	    (run-or-raise "conkeror" '(:class "Conkeror")))
 (define-key *root-map* (kbd "w") "conkeror")
 
+(defcommand chromium () ()
+            "run chromium"
+	    (run-or-raise "chromium" '(:class "Chromium")))
+(define-key *root-map* (kbd "b") "chromium")
+
 (defcommand emacs () ()
 	    "run emacs"
 	    (run-or-raise "emacs" '(:class "Emacs")))
