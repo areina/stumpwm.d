@@ -10,7 +10,11 @@
 (defcommand chromium () ()
             "run chromium"
 	    (run-or-raise "chromium" '(:class "Chromium")))
-(define-key *root-map* (kbd "b") "chromium")
+
+(defcommand firefox () ()
+  "run firefox"
+  (run-or-raise "firefox" '(:class "Firefox")))
+(define-key *root-map* (kbd "b") "firefox")
 
 (defcommand emacs () ()
 	    "run emacs"
