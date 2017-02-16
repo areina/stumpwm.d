@@ -50,6 +50,11 @@
   (toggle-mode-line (current-screen) (current-head)))
 (define-key *root-map* (kbd "q") "toggle-current-mode-line")
 
+;; stumptray module
+(setq stumptray::*tray-viwin-background* "#38394c")
+(setq stumptray::*tray-cursor-thickness* -1)
+(setq stumptray::*tray-cursor-icon-distance* 1)
+
 ;; Code by Male
 ;; Display the keysequence in progress
 (defun key-press-hook (key key-seq cmd)
