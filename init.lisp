@@ -1,5 +1,7 @@
 ;; -*-lisp-*-
 
+(run-shell-command "xrdb -merge ~/.Xresources")
+
 (in-package :stumpwm)
 
 (defvar *stumpwm-config-dir* "~/.stumpwm.d/"
@@ -10,6 +12,10 @@
 ;; ;;Set the default shell
 (setf *shell-program* (stumpwm::getenv "SHELL")) ;getenv is not exported
 
+(load "~/quicklisp/setup.lisp")
+(ql:quickload "clx-truetype")
+(ql:quickload :xembed) ;; Required by stumptray
+
 ;; load some contrib modules
 (mapcar #'load-module '("cpu"
                         "mem"
@@ -17,20 +23,23 @@
                         "net"
                         "wifi"
                         "disk"
-                        "ttf-fonts"))
-
-(setq disk::*disk-usage-paths* '("/" "/home"))
+                        "ttf-fonts"
+                        "stumptray"
+                        ))
 
 (defun load-user-module (name)
   (load (make-pathname :defaults *stumpwm-config-dir*
                        :name name
                        :type "lisp")))
 
-(load-user-module "swank")
-(load-user-module "utils")
 (load-user-module "theme")
+;; (load-user-module "swank")
+(load-user-module "utils")
 (load-user-module "applications")
 (load-user-module "media-keys")
 
-;; (run-shell-command "setxkbmap -geometry \"thinkpad(us)\" -option \"grp:shifts_toggle,ctrl:nocaps\" us,es")
-(run-shell-command "xrdb -merge -I ~/ ~/.Xresources")
+;; stumptray module
+(stumptray::add-mode-line-hooks)
+
+;; disk module
+(setq disk::*disk-usage-paths* '("/" "/home"))
