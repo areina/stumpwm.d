@@ -55,6 +55,21 @@
 (setq stumptray::*tray-cursor-thickness* -1)
 (setq stumptray::*tray-cursor-icon-distance* 1)
 
+;; Random wallpapers
+
+(defparameter *wallpapers* "~/Pictures/Wallpapers/*.jpg")
+
+(defun set-random-wallpaper ()
+  (run-shell-command
+   (concatenate 'string "feh --bg-fill "
+                (namestring
+                 (alexandria:random-elt (directory *wallpapers*))))))
+
+(defcommand random-wallpaper () ()
+  (set-random-wallpaper))
+
+(random-wallpaper)
+
 ;; Code by Male
 ;; Display the keysequence in progress
 (defun key-press-hook (key key-seq cmd)
