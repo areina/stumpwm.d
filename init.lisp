@@ -43,3 +43,7 @@
 
 ;; disk module
 (setq disk::*disk-usage-paths* '("/" "/home"))
+
+;; wifi module
+(setq wifi::*iwconfig-path* "/usr/bin/env iwconfig")
+
