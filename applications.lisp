@@ -21,6 +21,11 @@
 	    (run-or-raise "emacs" '(:class "Emacs")))
 (define-key *root-map* (kbd "e") "emacs")
 
+(defcommand thunar () ()
+  "thunar"
+  (run-or-raise "thunar" '(:class "Thunar")))
+(define-key *root-map* (kbd "y") "thunar")
+
 (defcommand lock-screen () ()
 	    "lock screen"
   (run-shell-command "light-locker-command --lock"))
